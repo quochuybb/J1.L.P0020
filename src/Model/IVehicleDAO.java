@@ -6,11 +6,11 @@ public interface IVehicleDAO {
     public void addNewVehicle(int root);
     public void checkExistVehicle();
 
-    void searchVehicle(String searchby);
+    public void searchVehicle(String searchBy);
 
     public void updateVehicle();
 
-    boolean checkExist(String id_Vehicle);
+    public boolean checkExist(String id_Vehicle);
 
     public void searchByName();
     public void searchByID();

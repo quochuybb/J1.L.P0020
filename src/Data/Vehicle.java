@@ -13,7 +13,7 @@ public class Vehicle{
     public Vehicle(){}
     public Vehicle(String ID_Vehicle, String name_Vehicle, float price_Vehicle, String brand_Vehicle, int productYear, String type, String color_Vehicle) {
         this.ID_Vehicle = ID_Vehicle;
-        Name_Vehicle = name_Vehicle;
+        this.Name_Vehicle = name_Vehicle;
         this.price_Vehicle = price_Vehicle;
         this.brand_Vehicle = brand_Vehicle;
         this.productYear = productYear;

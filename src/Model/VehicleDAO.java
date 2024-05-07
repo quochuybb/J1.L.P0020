@@ -11,7 +11,7 @@ import java.util.List;
 public class VehicleDAO implements IVehicleDAO{
     public static List<Vehicle> vehicleList = new ArrayList<>();
     String line;
-    List<String> vehicledeleted = new ArrayList<>();
+    List<String> vehicleDeleted = new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
     @Override
     public void addNewVehicle(int root) {
@@ -73,7 +73,7 @@ public class VehicleDAO implements IVehicleDAO{
                         vehicleList.add(vehicle);
                     }
                     else {
-                        System.out.println("User " + id_vehicle + " exist!!!");
+                        System.out.println("Vehicle " + id_vehicle + " exist!!!");
                         continue;
                     }
                     isCountinue = false;
@@ -139,7 +139,7 @@ public class VehicleDAO implements IVehicleDAO{
             while ((line = bufferedReader.readLine()) != null){
                 String[] parts = line.split(" - ");
                 if (id_vehicle.equals(parts[0])){
-                    vehicledeleted = Arrays.asList(parts);
+                    vehicleDeleted = Arrays.asList(parts);
                     continue;
                 }
 
@@ -148,8 +148,8 @@ public class VehicleDAO implements IVehicleDAO{
             FileWriter clearFile = new FileWriter("Vehicle.dat", false);
             clearFile.flush();
             clearFile.close();
-            for (int i = 0;i < lines.size();i++){
-                saveDataToFile(lines.get(i));
+            for (List<String> strings : lines) {
+                saveDataToFile(strings);
             }
             System.out.println("Success");
         } catch (IOException e) {
@@ -172,8 +172,6 @@ public class VehicleDAO implements IVehicleDAO{
                     }
                     printWrite.flush();
                     printWrite.close();
-                } catch (FileNotFoundException e) {
-                    throw new RuntimeException(e);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -181,7 +179,7 @@ public class VehicleDAO implements IVehicleDAO{
             }
         }
         else {
-            System.out.println("User " + line.get(0) + " exist!!!");
+            System.out.println("Vehicle " + line.get(0) + " exist!!!");
         }
     }
 
@@ -248,19 +246,19 @@ public class VehicleDAO implements IVehicleDAO{
                     value = field.get(vehicle);
                     if (value.toString().equals("")){
                         if (fieldName.equals("ID_Vehicle")){
-                            value = vehicledeleted.get(0);
+                            value = vehicleDeleted.get(0);
                         } else if (fieldName.equals("Name_Vehicle")) {
-                            value = vehicledeleted.get(1);
+                            value = vehicleDeleted.get(1);
                         } else if (fieldName.equals("price_Vehicle")) {
-                            value = vehicledeleted.get(2);
+                            value = vehicleDeleted.get(2);
                         } else if (fieldName.equals("brand_Vehicle")) {
-                            value = vehicledeleted.get(3);
+                            value = vehicleDeleted.get(3);
                         } else if (fieldName.equals("productYear")) {
-                            value = vehicledeleted.get(4);
+                            value = vehicleDeleted.get(4);
                         } else if (fieldName.equals("type")) {
-                            value = vehicledeleted.get(5);
+                            value = vehicleDeleted.get(5);
                         } else if (fieldName.equals("color_Vehicle")) {
-                            value = vehicledeleted.get(6);
+                            value = vehicleDeleted.get(6);
                         }
                     }
                 } catch (IllegalAccessException e) {
